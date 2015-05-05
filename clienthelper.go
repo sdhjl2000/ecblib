@@ -1,4 +1,4 @@
-package utilib
+package utillib
 
 import (
 	"bytes"
