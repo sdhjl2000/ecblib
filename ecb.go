@@ -1,4 +1,4 @@
-package ecblib
+package utillib
 
 import (
 	"bytes"
