@@ -132,7 +132,7 @@ func DecryptECB(src string, hexKey string) string {
 	}
 	ecbn := NewECBDecrypter(block)
 	content := decodeBase64(src)
-	fmt.Println(content)
+	//fmt.Println(content)
 	//content = PKCS5Padding(content, block.BlockSize())
 	crypted := make([]byte, len(content))
 	ecbn.CryptBlocks(crypted, content)
