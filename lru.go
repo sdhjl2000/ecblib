@@ -58,7 +58,7 @@ func (c *Cache) Purge() {
 }
 
 // Add adds a value to the cache.  Returns true if an eviction occured.
-func (c *Cache) Set(key string, value interface{}) bool {
+func (c *Cache) Set(key string, value interface{}) {
 	c.lock.Lock()
 	defer c.lock.Unlock()
 
@@ -66,7 +66,7 @@ func (c *Cache) Set(key string, value interface{}) bool {
 	if ent, ok := c.items[key]; ok {
 		c.evictList.MoveToFront(ent)
 		ent.Value.(*entry).value = value
-		return false
+		//return false
 	}
 
 	// Add new item
@@ -79,7 +79,7 @@ func (c *Cache) Set(key string, value interface{}) bool {
 	if evict {
 		c.removeOldest()
 	}
-	return evict
+	//return evict
 }
 
 // Get looks up a key's value from the cache.
