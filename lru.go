@@ -58,7 +58,7 @@ func (c *Cache) Purge() {
 }
 
 // Add adds a value to the cache.  Returns true if an eviction occured.
-func (c *Cache) Add(key, value interface{}) bool {
+func (c *Cache) Set(key string, value interface{}) bool {
 	c.lock.Lock()
 	defer c.lock.Unlock()
 
@@ -83,7 +83,7 @@ func (c *Cache) Add(key, value interface{}) bool {
 }
 
 // Get looks up a key's value from the cache.
-func (c *Cache) Get(key interface{}) (value interface{}, ok bool) {
+func (c *Cache) Get(key string) (value interface{}, ok bool) {
 	c.lock.Lock()
 	defer c.lock.Unlock()
 
@@ -95,7 +95,7 @@ func (c *Cache) Get(key interface{}) (value interface{}, ok bool) {
 }
 
 // Check if a key is in the cache, without updating the recent-ness or deleting it for being stale.
-func (c *Cache) Contains(key interface{}) (ok bool) {
+func (c *Cache) Contains(key string) (ok bool) {
 	c.lock.RLock()
 	defer c.lock.RUnlock()
 
