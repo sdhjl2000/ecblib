@@ -15,7 +15,7 @@ func SendPostRequest(url string, data string) string {
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
-		panic(err)
+		fmt.Println(err.Error())
 	}
 	defer resp.Body.Close()
 
